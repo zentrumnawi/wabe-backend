@@ -30,7 +30,7 @@ class WordSerializer(DisplayNameModelSerializer):
     tone = ToneSerializer()
     meaning = MeaningSerializer()
     media_objects = MediaObjectSerializer(many=True)
-    
+
     class Meta:
         model = Word
         fields = "__all__"

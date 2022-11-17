@@ -1,4 +1,5 @@
 TONE_CHOICES = (
+    (None, "---------"),
     ("<o> --> <a>-Wechsel", "<o> --> <a>-Wechsel"),
     ("Ablaut", "Ablaut"),
     ("Ahd. Diphtongierung", "Ahd. Diphtongierung"),
@@ -41,6 +42,7 @@ TONE_CHOICES = (
     ("Zweite hochdeutsche Lautverschiebung", "Zweite hochdeutsche Lautverschiebung")
 )
 MEANING_CHOICES = (
+    (None, "---------"),
     ("Bedeutungsverengung", "Bedeutungsverengung"),
     ("Bedeutungserweiterung", "Bedeutungserweiterung"),
     ("Bedeutungswandel", "Bedeutungswandel"),

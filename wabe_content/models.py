@@ -3,7 +3,7 @@ from solid_backend.content.models import SolidBaseProfile
 from solid_backend.content.fields import ConcatCharField
 from django.utils.translation import ugettext_lazy as _
 
-from .choices import TONE_CHOICES
+from .choices import TONE_CHOICES, MEANING_CHOICES
 
 
 class Word(SolidBaseProfile):
@@ -106,7 +106,7 @@ class Meaning(models.Model):
     )
     meaning_type = ConcatCharField(
         max_length=400,
-        concat_choices=[TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES],
+        concat_choices=[MEANING_CHOICES, MEANING_CHOICES, MEANING_CHOICES, MEANING_CHOICES, MEANING_CHOICES],
         seperators=[", ", " und "],
         verbose_name=_("Mhd. zu Nhd."),
         default="",

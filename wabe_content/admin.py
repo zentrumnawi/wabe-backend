@@ -1,4 +1,6 @@
 from django.contrib import admin
+from solid_backend.media_object.admin import MediaObjectInline
+
 from .models import Word, Tone, Meaning
 # Register your models here.
 
@@ -13,7 +15,7 @@ class MeaningAdminInline(admin.StackedInline):
 
 class WordAdmin(admin.ModelAdmin):
     model = Word
-    inlines = [ToneAdminInline, MeaningAdminInline]
+    inlines = [ToneAdminInline, MeaningAdminInline, MediaObjectInline]
 
 
 class ToneAdmin(admin.ModelAdmin):

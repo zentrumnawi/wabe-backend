@@ -4,6 +4,14 @@ from solid_backend.media_object.serializers import MediaObjectSerializer
 from .models import Word, Tone, Meaning
 
 
+class MDStringField(serializers.CharField):
+
+    class Meta:
+        swagger_schema_fields = {
+            "type": "mdstring"
+        }
+
+
 class DisplayNameModelSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super(DisplayNameModelSerializer, self).to_representation(instance)
@@ -12,6 +20,7 @@ class DisplayNameModelSerializer(serializers.ModelSerializer):
 
 
 class ToneSerializer(DisplayNameModelSerializer):
+    description = MDStringField()
 
     class Meta:
         model = Tone
@@ -20,6 +29,8 @@ class ToneSerializer(DisplayNameModelSerializer):
 
 
 class MeaningSerializer(DisplayNameModelSerializer):
+    description = MDStringField()
+
     class Meta:
         model = Meaning
         exclude = ["word"]
@@ -27,6 +38,9 @@ class MeaningSerializer(DisplayNameModelSerializer):
 
 
 class WordSerializer(DisplayNameModelSerializer):
+    lexem = MDStringField()
+    etymology = MDStringField()
+    semantics = MDStringField()
     tone = ToneSerializer()
     meaning = MeaningSerializer()
     media_objects = MediaObjectSerializer(many=True)

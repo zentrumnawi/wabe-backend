@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from solid_backend.media_object.serializers import MediaObjectSerializer
+from drf_spectacular.extensions import OpenApiSerializerFieldExtension
 
-from .models import Word, Tone, Meaning
+from .models import Word, Tone, Meaning, MDTextField
 
 
 class MDStringField(serializers.CharField):
@@ -10,6 +11,10 @@ class MDStringField(serializers.CharField):
         swagger_schema_fields = {
             "type": "mdstring"
         }
+
+
+class MDField(serializers.CharField):
+    pass
 
 
 class DisplayNameModelSerializer(serializers.ModelSerializer):
@@ -38,14 +43,25 @@ class MeaningSerializer(DisplayNameModelSerializer):
 
 
 class WordSerializer(DisplayNameModelSerializer):
-    lexem = MDStringField()
-    etymology = MDStringField()
-    semantics = MDStringField()
+
     tone = ToneSerializer()
     meaning = MeaningSerializer()
     media_objects = MediaObjectSerializer(many=True)
+    serializer_field_mapping = {
+        **serializers.ModelSerializer.serializer_field_mapping,
+        MDTextField: MDField
+    }
 
     class Meta:
         model = Word
         fields = "__all__"
         swagger_schema_fields = {"title": str(model._meta.verbose_name)}
+
+
+class MdFieldExtension(OpenApiSerializerFieldExtension):
+    target_class = "wabe_content.serializers.MDField"
+
+    def map_serializer_field(self, auto_schema, direction):
+        schema = auto_schema._map_serializer_field(self.target, direction, bypass_extensions=True)
+        schema['format'] = 'mdstring'
+        return schema

@@ -6,28 +6,32 @@ from django.utils.translation import ugettext_lazy as _
 from .choices import TONE_CHOICES, MEANING_CHOICES
 
 
+class MDTextField(models.TextField):
+    pass
+
+
 class Word(SolidBaseProfile):
     name = models.CharField(max_length=200, verbose_name=_("Titel"))
 
-    graphic = models.TextField(
+    graphic = MDTextField(
         max_length=500,
         null=True,
         blank=True,
         verbose_name=_("Graphie"),
     )
-    lexem = models.TextField(
+    lexem = MDTextField(
         max_length=500,
         null=True,
         blank=True,
         verbose_name=_("Lexem"),
     )
-    etymology = models.TextField(
+    etymology = MDTextField(
         max_length=500,
         null=True,
         blank=True,
         verbose_name=_("Etymologie"),
     )
-    semantics = models.TextField(
+    semantics = MDTextField(
         max_length=500,
         null=True,
         blank=True,

@@ -51,7 +51,7 @@ class Tone(models.Model):
         on_delete=models.CASCADE,
         verbose_name=_("Wort")
     )
-    description = models.TextField(
+    description = MDTextField(
         max_length=500,
         null=True,
         blank=True,
@@ -102,7 +102,7 @@ class Meaning(models.Model):
         on_delete=models.CASCADE,
         verbose_name=_("Wort")
     )
-    description = models.TextField(
+    description = MDTextField(
         max_length=500,
         null=True,
         blank=True,

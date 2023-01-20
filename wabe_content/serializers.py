@@ -25,7 +25,11 @@ class DisplayNameModelSerializer(serializers.ModelSerializer):
 
 
 class ToneSerializer(DisplayNameModelSerializer):
-    description = MDStringField()
+
+    serializer_field_mapping = {
+        **serializers.ModelSerializer.serializer_field_mapping,
+        MDTextField: MDField
+    }
 
     class Meta:
         model = Tone
@@ -34,7 +38,11 @@ class ToneSerializer(DisplayNameModelSerializer):
 
 
 class MeaningSerializer(DisplayNameModelSerializer):
-    description = MDStringField()
+
+    serializer_field_mapping = {
+        **serializers.ModelSerializer.serializer_field_mapping,
+        MDTextField: MDField
+    }
 
     class Meta:
         model = Meaning

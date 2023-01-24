@@ -20,7 +20,7 @@ markupsafe = "==1.1.1"
 pillow = "*"
 psycopg2-binary = "<2.9"
 raven = "*"
-solid-backend = {version = "*", allow-prereleases = true}
+solid-backend = {version = "^0.2.1", allow-prereleases = true}
 whitenoise = "*"
 drf-spectacular = "^0.24.2"
 

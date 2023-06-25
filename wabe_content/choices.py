@@ -22,6 +22,7 @@ TONE_CHOICES = (
     ("Kontraktion", "Kontraktion"),
     ("Kürzung", "Kürzung"),
     ("Metathese", "Metathese"),
+    ("Nebensilbenabschwächung", "Nebensilbenabschwächung"),
     ("Nhd. Diphthongierung", "Nhd. Diphthongierung"),
     ("Nhd. Diphthongwandel", "Nhd. Diphthongwandel"),
     ("Nhd. Monophthongierung", "Nhd. Monophthongierung"),

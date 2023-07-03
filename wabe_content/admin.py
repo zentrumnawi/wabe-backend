@@ -24,14 +24,6 @@ class WordAdmin(admin.ModelAdmin):
     inlines = [ToneAdminInline, MeaningAdminInline, MediaObjectInline]
 
 
-class ToneAdmin(admin.ModelAdmin):
-    model = Tone
-
-
-class MeaningAdmin(admin.ModelAdmin):
-    model = Meaning
-
-
 admin.site.register(Word, WordAdmin)
-admin.site.register(Tone, ToneAdmin)
-admin.site.register(Meaning, MeaningAdmin)
+admin.site.register(Tone, admin.ModelAdmin)
+admin.site.register(Meaning, admin.ModelAdmin)

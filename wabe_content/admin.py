@@ -21,7 +21,7 @@ class GeneralInformationInline(admin.StackedInline):
 
 class WordAdmin(admin.ModelAdmin):
     model = Word
-    inlines = [ToneAdminInline, MeaningAdminInline, MediaObjectInline]
+    inlines = [ToneAdminInline, MeaningAdminInline, GeneralInformationInline, MediaObjectInline]
 
 
 admin.site.register(Word, WordAdmin)

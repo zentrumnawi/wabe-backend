@@ -12,33 +12,6 @@ class MDTextField(models.TextField):
 
 
 class Word(SolidBaseProfile):
-    name = models.CharField(max_length=200, verbose_name=_("Titel"))
-
-    graphic = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Graphie"),
-    )
-    lexem = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Lexem"),
-    )
-    etymology = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Etymologie"),
-    )
-    semantics = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Semantik"),
-    )
-
     class Meta:
         verbose_name = _("Wort")
         verbose_name_plural = _("Wörter")

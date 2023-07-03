@@ -13,6 +13,7 @@ def populate_general_information(apps, schema_editor):
 
     for obj in Word.objects.all():
         GeneralInformation.objects.create(
+                name=obj.name,
                 graphic=obj.graphic,
                 lexem=obj.lexem,
                 etymology=obj.etymology,
@@ -30,6 +31,7 @@ def populate_word_fields(apps, schema_editor):
 
     for obj in Word.objects.all():
         general_info = obj.general_information
+        obj.name = general_info.name
         obj.graphic = general_info.graphic
         obj.lexem = general_info.lexem
         obj.etymology = general_info.etymology

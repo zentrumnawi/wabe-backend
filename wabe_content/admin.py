@@ -27,3 +27,4 @@ class WordAdmin(admin.ModelAdmin):
 admin.site.register(Word, WordAdmin)
 admin.site.register(Tone, admin.ModelAdmin)
 admin.site.register(Meaning, admin.ModelAdmin)
+admin.site.register(GeneralInformation, admin.ModelAdmin)

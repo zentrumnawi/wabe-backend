@@ -30,11 +30,6 @@ urlpatterns = [
     path(r'{}api/schema/redoc/'.format(settings.URI_PREFIX), SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 urlpatterns += [
-    url(
-        r"^{}".format(settings.URI_PREFIX),
-        include("api_docs.api_docs"),
-        name="api_docs",
-    ),
     url(r"^{}".format(settings.URI_PREFIX), include("solid_backend.urls")),
 
     url(r"^{}admin/".format(settings.URI_PREFIX), admin.site.urls),

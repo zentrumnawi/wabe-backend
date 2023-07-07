@@ -146,9 +146,9 @@ URI_PREFIX = env("URI_PREFIX", default="")
 STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 STATIC_URL = '/static/'
 
-PROFILES_SERIALIZER_MODULE, PROFILES_SERIALIZER_NAME = env(
-    "PROFILES_SERIALIZER", default=""
-).rsplit(".", 1)
+PROFILES_SERIALIZERS = {
+    "word_related": ("wabe_content.serializers", "WordSerializer",),
+}
 
 DATABASE_FIELD_MAPPING = {}
 

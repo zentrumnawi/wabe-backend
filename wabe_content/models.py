@@ -1,6 +1,7 @@
 from django.db import models
 from solid_backend.content.models import SolidBaseProfile
 from solid_backend.content.fields import ConcatCharField
+from solid_backend.utils.drf_spectacular_extensions import MDTextField as NewMDTextField
 from django.utils.translation import ugettext_lazy as _
 
 from .choices import TONE_CHOICES, MEANING_CHOICES
@@ -11,33 +12,6 @@ class MDTextField(models.TextField):
 
 
 class Word(SolidBaseProfile):
-    name = models.CharField(max_length=200, verbose_name=_("Titel"))
-
-    graphic = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Graphie"),
-    )
-    lexem = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Lexem"),
-    )
-    etymology = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Etymologie"),
-    )
-    semantics = MDTextField(
-        max_length=500,
-        null=True,
-        blank=True,
-        verbose_name=_("Semantik"),
-    )
-
     class Meta:
         verbose_name = _("Wort")
         verbose_name_plural = _("Wörter")
@@ -120,3 +94,44 @@ class Meaning(models.Model):
     class Meta:
         verbose_name = _("Bedeutungswandel")
         verbose_name_plural = _("Bedeutungswandel")
+
+
+class GeneralInformation(models.Model):
+
+    word = models.OneToOneField(
+        to=Word,
+        on_delete=models.CASCADE,
+        related_name="general_information",
+        verbose_name=_("Wort"),
+    )
+
+    name = models.CharField(max_length=200, verbose_name=_("Titel"))
+
+    graphic = NewMDTextField(
+        max_length=500,
+        null=True,
+        blank=True,
+        verbose_name=_("Graphie"),
+    )
+    lexem = NewMDTextField(
+        max_length=500,
+        null=True,
+        blank=True,
+        verbose_name=_("Lexem"),
+    )
+    etymology = NewMDTextField(
+        max_length=500,
+        null=True,
+        blank=True,
+        verbose_name=_("Etymologie"),
+    )
+    semantics = NewMDTextField(
+        max_length=500,
+        null=True,
+        blank=True,
+        verbose_name=_("Semantik"),
+    )
+
+    class Meta:
+        verbose_name = _("Allgemein")
+        verbose_name_plural = _("Allgemein")

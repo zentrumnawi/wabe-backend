@@ -1,14 +1,10 @@
 from django.db import models
 from solid_backend.content.models import SolidBaseProfile
 from solid_backend.content.fields import ConcatCharField
-from solid_backend.utils.drf_spectacular_extensions import MDTextField as NewMDTextField
+from solid_backend.utils.drf_spectacular_extensions import MDTextField
 from django.utils.translation import ugettext_lazy as _
 
 from .choices import TONE_CHOICES, MEANING_CHOICES
-
-
-class MDTextField(models.TextField):
-    pass
 
 
 class Word(SolidBaseProfile):
@@ -107,25 +103,25 @@ class GeneralInformation(models.Model):
 
     name = models.CharField(max_length=200, verbose_name=_("Titel"))
 
-    graphic = NewMDTextField(
+    graphic = MDTextField(
         max_length=500,
         null=True,
         blank=True,
         verbose_name=_("Graphie"),
     )
-    lexem = NewMDTextField(
+    lexem = MDTextField(
         max_length=500,
         null=True,
         blank=True,
         verbose_name=_("Lexem"),
     )
-    etymology = NewMDTextField(
+    etymology = MDTextField(
         max_length=500,
         null=True,
         blank=True,
         verbose_name=_("Etymologie"),
     )
-    semantics = NewMDTextField(
+    semantics = MDTextField(
         max_length=500,
         null=True,
         blank=True,

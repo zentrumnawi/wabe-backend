@@ -31,7 +31,7 @@ TONE_CHOICES = (
     ("Prothese", "Prothese"),
     ("Regressive Assimiliation", "Regressive Assimiliation"),
     ("Restumlaut", "Restumlaut"),
-    ("Rhoatzismus", "Rhoatzismus"),
+    ("Rhotazismus", "Rhotazismus"),
     ("Rücknahme der Auslautverhärtung in Schreibung", "Rücknahme der Auslautverhärtung in Schreibung"),
     ("Rundung (Labialisierung)", "Rundung (Labialisierung)"),
     ("Sekundärumlaut", "Sekundärumlaut"),

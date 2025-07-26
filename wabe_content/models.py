@@ -11,6 +11,7 @@ class Word(SolidBaseProfile):
     class Meta:
         verbose_name = _("Wort")
         verbose_name_plural = _("Wörter")
+        ordering = ["general_information__name"]
 
 
 class Tone(models.Model):

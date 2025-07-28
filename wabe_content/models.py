@@ -62,8 +62,59 @@ class Tone(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Lautwandel")
-        verbose_name_plural =_("Lautwandel")
+        verbose_name = _("Lautwandel (Grundlagen)")
+        verbose_name_plural =_("Lautwandel (Grundlagen)")
+
+class ToneAdvanced(models.Model):
+
+    word = models.OneToOneField(
+        Word,
+        related_name="tone_advanced",
+        on_delete=models.CASCADE,
+        verbose_name=_("Wort")
+    )
+    description = MDTextField(
+        max_length=500,
+        null=True,
+        blank=True,
+        verbose_name=_("Beschreibung"),
+    )
+    indo_germ = ConcatCharField(
+        max_length=400,
+        concat_choices=[TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES],
+        seperators=[", ", " und "],
+        verbose_name=_("Indogermanisch zu Germanisch"),
+        default="",
+        blank=True
+    )
+    germ_to_ahd = ConcatCharField(
+        max_length=400,
+        concat_choices=[TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES],
+        seperators=[", ", " und "],
+        verbose_name=_("Germanisch zu Ahd."),
+        default="",
+        blank=True
+    )
+    ahd_to_mhd = ConcatCharField(
+        max_length=400,
+        concat_choices=[TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES],
+        seperators=[", ", " und "],
+        verbose_name=_("Ahd. zu Mhd"),
+        default="",
+        blank=True
+    )
+    mhd_to_nhd = ConcatCharField(
+        max_length=400,
+        concat_choices=[TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES, TONE_CHOICES],
+        seperators=[", ", " und "],
+        verbose_name=_("Mhd. zu Nhd."),
+        default="",
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = _("Lautwandel (erweitert)")
+        verbose_name_plural =_("Lautwandel (erweitert)")
 
 
 class Meaning(models.Model):

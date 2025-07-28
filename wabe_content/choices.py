@@ -50,3 +50,9 @@ MEANING_CHOICES = (
     ("Meliorisierung", "Meliorisierung"),
     ("Pejorisierung", "Pejorisierung"),
 )
+
+YES_NO_CHOICES = (
+    (None, "---------"),
+    ("Ja", "Ja"),
+    ("Nein", "Nein"),
+)

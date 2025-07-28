@@ -4,7 +4,7 @@ from solid_backend.content.fields import ConcatCharField
 from solid_backend.utils.drf_spectacular_extensions import MDTextField
 from django.utils.translation import ugettext_lazy as _
 
-from .choices import TONE_CHOICES, MEANING_CHOICES
+from .choices import TONE_CHOICES, MEANING_CHOICES, YES_NO_CHOICES
 
 
 class Word(SolidBaseProfile):
@@ -86,6 +86,9 @@ class Meaning(models.Model):
         verbose_name=_("Mhd. zu Nhd."),
         default="",
         blank=True
+    )
+    died_out = models.CharField(
+        max_length=4, choices=YES_NO_CHOICES, verbose_name=_("Ausgestorben"), default=None, null=True, blank=True
     )
 
     class Meta:

@@ -1,13 +1,20 @@
 from solid_backend.media_object.serializers import MediaObjectSerializer
 from solid_backend.utils.serializers import SolidModelSerializer
 
-from .models import Word, Tone, Meaning, GeneralInformation
+from .models import Word, Tone, ToneAdvanced, Meaning, GeneralInformation
 
 
 class ToneSerializer(SolidModelSerializer):
 
     class Meta:
         model = Tone
+        exclude = ["word"]
+
+
+class ToneAdvancedSerializer(SolidModelSerializer):
+
+    class Meta:
+        model = ToneAdvanced
         exclude = ["word"]
 
 
@@ -29,6 +36,7 @@ class WordSerializer(SolidModelSerializer):
 
     general_information = GeneralInformationSerializer()
     tone = ToneSerializer()
+    tone_advanced = ToneAdvancedSerializer()
     meaning = MeaningSerializer()
     media_objects = MediaObjectSerializer(many=True)
 

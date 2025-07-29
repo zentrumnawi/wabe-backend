@@ -53,6 +53,7 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 EMAIL_HOST = env("DJANGO_EMAIL_HOST", default=None)
 EMAIL_PORT = 25
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+SYSTEM_EMAIL = env("SYSTEM_EMAIL")
 
 # Sentry Configuration
 SENTRY_DSN = env('DJANGO_SENTRY_DSN')

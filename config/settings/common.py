@@ -153,6 +153,11 @@ PROFILES_SERIALIZERS = {
     "word_related": ("wabe_content.serializers", "WordSerializer",),
 }
 
+GLOSSARY_TABS = [
+    ('Glossar', 'Glossar'),
+    ('Abkürzungen', 'Abkürzungen'), 
+]
+
 DATABASE_FIELD_MAPPING = {}
 
 STATICFILES_DIRS = (str(APPS_DIR.path('static')), )

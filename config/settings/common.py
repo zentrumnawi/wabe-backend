@@ -31,10 +31,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
-    "drf_yasg",
+    "drf_spectacular",
     "mptt",
     "stdimage",
     "corsheaders",
+    "taggit",
     "wabe_content.apps.wabeContentConfig",
     "solid_backend.content",
     "solid_backend.contact",
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     "solid_backend.slideshow",
     "solid_backend.quiz",
     "solid_backend.photograph",
+    "solid_backend.media_object",
     "django_cleanup.apps.CleanupConfig",  # Should be placed last!
 ]
 
@@ -123,6 +125,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Project Name
+PROJECT_NAME = env("PROJECT_NAME", default="")
+
 # Locale
 LANGUAGES = [("de", _("German")), ("en", _("English"))]
 LOCALE_PATHS = [str(ROOT_DIR("locale"))]
@@ -144,9 +149,14 @@ URI_PREFIX = env("URI_PREFIX", default="")
 STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 STATIC_URL = '/static/'
 
-PROFILES_SERIALIZER_MODULE, PROFILES_SERIALIZER = env(
-    "PROFILES_SERIALIZER", default=""
-).rsplit(".", 1)
+PROFILES_SERIALIZERS = {
+    "word_related": ("wabe_content.serializers", "WordSerializer",),
+}
+
+GLOSSARY_TABS = [
+    ('Glossar', 'Glossar'),
+    ('Abkürzungen', 'Abkürzungen'), 
+]
 
 DATABASE_FIELD_MAPPING = {}
 
@@ -157,3 +167,16 @@ STATICFILES_FINDERS = (
 
 # CORS
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Restframework
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'WABE API',
+    'DESCRIPTION': "Backend for the e-learning application WABE.",
+    'VERSION': '1.0.0',
+    # OTHER SETTINGS
+}

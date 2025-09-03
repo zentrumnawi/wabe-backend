@@ -49,6 +49,12 @@ INSTALLED_APPS += ("gunicorn", )
 DATABASES = {'default': env.db("DATABASE_URL")}
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
+# EMAIL
+EMAIL_HOST = env("DJANGO_EMAIL_HOST", default=None)
+EMAIL_PORT = 25
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+SYSTEM_EMAIL = env("SYSTEM_EMAIL")
+
 # Sentry Configuration
 SENTRY_DSN = env('DJANGO_SENTRY_DSN')
 SENTRY_CLIENT = env(

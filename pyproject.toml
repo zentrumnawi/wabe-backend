@@ -24,7 +24,6 @@ whitenoise = "*"
 drf-spectacular = "^0.24.2"
 
 [tool.poetry.dev-dependencies]
-black = "19.10b0"
 codecov = "*"
 coverage = "*"
 django-coverage-plugin = "*"
@@ -37,6 +36,9 @@ pytest-django = "*"
 pytest-isort = "*"
 pytest-sugar = "*"
 werkzeug = "<2.0.9"
+
+[tool.poetry.group.dev.dependencies]
+black = "22.3.0"
 
 [build-system]
 # Should be the same as `$POETRY_VERSION`:

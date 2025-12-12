@@ -22,6 +22,7 @@ raven = "*"
 solid-backend = {version = "*", allow-prereleases = true}
 whitenoise = "*"
 drf-spectacular = "^0.24.2"
+sentry-sdk = "^2.47.0"
 
 [tool.poetry.dev-dependencies]
 codecov = "*"

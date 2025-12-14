@@ -18,10 +18,10 @@ gunicorn = "*"
 markupsafe = "==1.1.1"
 pillow = "*"
 psycopg2-binary = "<2.9"
-raven = "*"
 solid-backend = {version = "*", allow-prereleases = true}
 whitenoise = "*"
 drf-spectacular = "^0.24.2"
+sentry-sdk = "^2.47.0"
 
 [tool.poetry.dev-dependencies]
 codecov = "*"
